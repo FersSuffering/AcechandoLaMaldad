@@ -151,9 +151,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletSpeed: 30
   lifeTime: 2.5
-  damage: 1
+  damage: 2
   damageEnemy: 0
-  damagePlayer: 0
+  damagePlayer: 1
   theRigidBody: {fileID: 1771691871370960458}
 --- !u!96 &5094409340001671143
 TrailRenderer:
@@ -176,7 +176,7 @@ TrailRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 356fb9ccba4e3a84589fe8f95b56bd49, type: 2}
+  - {fileID: 2100000, guid: 71317ac2a3a332043b57130794afd3bf, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
