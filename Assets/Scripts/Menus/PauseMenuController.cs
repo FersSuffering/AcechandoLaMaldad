@@ -4,9 +4,6 @@ using UnityEngine.UI;
 
 public class PauseMenuController : MonoBehaviour
 {
-    public Button backToGameButton;
-    public Button backToMenuButton;
-    public Button quitButton;
 
     public AudioSource soundEffectsSource; 
     public AudioClip selectSound;
@@ -18,36 +15,19 @@ public class PauseMenuController : MonoBehaviour
     void Start()
     {
 
-        backToGameButton.onClick.AddListener(() => {
-            PlaySelectSound();
-            ResumeGame();
-        });
-
-        backToMenuButton.onClick.AddListener(() => {
-            PlaySelectSound();
-            LoadMainMenu();
-        });
-
-        quitButton.onClick.AddListener(() => {
-            PlaySelectSound();
-            Invoke("QuitGame", 0.5f);
-        });
-
         if (musicSource != null && pauseMusic != null)
         {
             musicSource.clip = pauseMusic;
             musicSource.loop = true;
             musicSource.Play();
         }
-
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
     }
 
-    void ResumeGame()
+    public void ResumeGame()
     {
-        Time.timeScale = 1f;
-        SceneManager.LoadScene("Level");
+        PlaySelectSound();
+
+        GameManager.instance.PauseUnpause();
 
         if (musicSource != null && musicSource.isPlaying)
         {
@@ -55,9 +35,10 @@ public class PauseMenuController : MonoBehaviour
         }
     }
 
-    void LoadMainMenu()
+    public void LoadMainMenu()
     {
-        Time.timeScale = 1f;
+        PlaySelectSound();
+
         SceneManager.LoadScene("StartMenu");
 
         if (musicSource != null && musicSource.isPlaying)
@@ -66,8 +47,10 @@ public class PauseMenuController : MonoBehaviour
         }
     }
 
-    void QuitGame()
+    public void QuitGame()
     {
+        PlaySelectSound();
+
         Application.Quit();
 
 #if UNITY_EDITOR
