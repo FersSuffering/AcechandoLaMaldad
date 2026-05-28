@@ -21,12 +21,6 @@ public class UI : MonoBehaviour
         instance = this;
     }
 
-    void Start()
-    {
-        pauseMenu.SetActive(false);
-
-    }
-
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -36,13 +30,22 @@ public class UI : MonoBehaviour
 
         if (damageEffect.color.a != 0)
         {
-            damageEffect.color = new Color(damageEffect.color.r, damageEffect.color.g, damageEffect.color.b, Mathf.MoveTowards(damageEffect.color.a, 0f, damageFadeSpeed * Time.deltaTime));
+            damageEffect.color = new Color(
+                damageEffect.color.r,
+                damageEffect.color.g,
+                damageEffect.color.b,
+                Mathf.MoveTowards(damageEffect.color.a, 0f, damageFadeSpeed * Time.deltaTime)
+            );
         }
     }
 
     public void ShowDamage()
     {
-        damageEffect.color = new Color(damageEffect.color.r, damageEffect.color.g, damageEffect.color.b, 0.3f);
-
+        damageEffect.color = new Color(
+            damageEffect.color.r,
+            damageEffect.color.g,
+            damageEffect.color.b,
+            0.3f
+        );
     }
 }
