@@ -16,6 +16,9 @@ public class Gun : MonoBehaviour
 
     public Transform firepoint;
 
+    public GameObject Crosshair;
+    public GameObject AmmoIcon;
+
     void Start()
     {
         

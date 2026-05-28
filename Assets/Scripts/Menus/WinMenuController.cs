@@ -4,23 +4,18 @@ using UnityEngine.UI;
 
 public class WinMenuController : MonoBehaviour
 {
-    public Button winRestartButton;
-    public Button winBackToMenuButton;
-    public Button winQuitButton;
-
     public AudioSource winSoundEffectsSource;
     public AudioClip winSelectSound;
 
     public AudioSource winMusicSource;
     public AudioClip winMusicClip;
 
-    public Canvas winMenuCanvas;
+    public AudioSource winCheerSource;
+    public AudioClip winCheerClip;
+
 
     void Start()
     {
-        winRestartButton.onClick.AddListener(OnWinRestart);
-        winBackToMenuButton.onClick.AddListener(OnWinBackToMenu);
-        winQuitButton.onClick.AddListener(OnWinQuit);
 
         if (winMusicSource != null && winMusicClip != null)
         {
@@ -29,34 +24,40 @@ public class WinMenuController : MonoBehaviour
             winMusicSource.Play();
         }
 
-        winMenuCanvas.gameObject.SetActive(true);
+        if (winCheerSource != null && winCheerClip != null)
+        {
+            winCheerSource.clip = winCheerClip;
+            winCheerSource.Play();
+        }
+
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
 
-    void OnWinRestart()
+    public void Restart()
     {
         PlayWinSelectSound();
-        Time.timeScale = 1f;
+
         SceneManager.LoadScene("Level");
 
         if (winMusicSource != null && winMusicSource.isPlaying)
             winMusicSource.Stop();
     }
 
-    void OnWinBackToMenu()
+    public void BackToMenu()
     {
         PlayWinSelectSound();
-        Time.timeScale = 1f;
+
         SceneManager.LoadScene("StartMenu");
 
         if (winMusicSource != null && winMusicSource.isPlaying)
             winMusicSource.Stop();
     }
 
-    void OnWinQuit()
+    public void Quit()
     {
         PlayWinSelectSound();
+
         Application.Quit();
 
 #if UNITY_EDITOR

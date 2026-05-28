@@ -14,6 +14,9 @@ public class Player : MonoBehaviour
     public List<Gun> allGuns = new List<Gun>();
     public int currentGun;
 
+    public AudioSource playerAudio;
+    public AudioClip noAmmo;
+
     private void Awake()
     {
         instance = this;
@@ -92,6 +95,10 @@ public class Player : MonoBehaviour
 
             StartCoroutine(MuzzleFlash());
         }
+        else
+        {
+            playerAudio.PlayOneShot(noAmmo);
+        }
     }
 
     IEnumerator MuzzleFlash()
@@ -104,6 +111,8 @@ public class Player : MonoBehaviour
     public void SwitchGun()
     {
         activeGun.gameObject.SetActive(false);
+        activeGun.Crosshair.SetActive(false);
+        activeGun.AmmoIcon.SetActive(false);
 
         currentGun++;
 
@@ -114,6 +123,8 @@ public class Player : MonoBehaviour
 
         activeGun = allGuns[currentGun];
         activeGun.gameObject.SetActive(true);
+        activeGun.Crosshair.SetActive(true);
+        activeGun.AmmoIcon.SetActive(true);
 
         firePoint.position = activeGun.firepoint.position;
     }

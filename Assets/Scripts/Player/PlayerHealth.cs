@@ -33,8 +33,8 @@ public class PlayerHealth : MonoBehaviour
         UI.instance.ShowDamage();
 
         if (currentHealth <= 0) 
-        { 
-            gameObject.SetActive(false);
+        {
+            GameManager.instance.Lose();
         }
     }
 

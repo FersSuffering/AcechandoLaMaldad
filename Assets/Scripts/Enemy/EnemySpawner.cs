@@ -5,8 +5,8 @@ public class HordeSpawnerCoroutine : MonoBehaviour
 {
     public GameObject enemyToSpawn;
 
-    public int enemiesPerHorde = 10;
-    public float timeBetweenSpawns = 0.5f;
+    public int enemiesPerHorde = 5;
+    public float timeBetweenSpawns = 1f;
     public float timeBetweenHordes = 20f;
 
     void Start()

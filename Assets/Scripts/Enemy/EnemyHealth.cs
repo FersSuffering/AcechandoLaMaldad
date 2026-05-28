@@ -17,6 +17,11 @@ public class EnemyHealth : MonoBehaviour
         enemy = GetComponent<EnemyMove>();
     }
 
+    private void Update()
+    {
+        UI.instance.pointsText.text = "" + UI.instance.points;
+    }
+
     public void DamageEnemy(int damage, bool isHead)
     {
         enemy.agent.destination = transform.position;
@@ -27,6 +32,8 @@ public class EnemyHealth : MonoBehaviour
 
         if (currentHealth <= 0)
         {
+            UI.instance.points += 100;
+
             StartCoroutine(Die());
         }
         else

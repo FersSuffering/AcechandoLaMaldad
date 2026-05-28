@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public static bool isPaused = false;
+    public int pointsToWin = 1000;
 
     private void Awake()
     {
@@ -19,18 +20,32 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+
+        if (UI.instance.points >= pointsToWin)
         {
-            PauseUnpause();
+            Win();
         }
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                PauseUnpauseMenu();
+            }
+        }
+        
     }
 
-    public void PauseUnpause()
+    public void PauseUnpauseMenu()
     {
         isPaused = !isPaused;
 
         UI.instance.pauseMenu.SetActive(isPaused);
 
+        Paused(isPaused);
+    }
+
+    public void Paused(bool isPaused)
+    {
         if (isPaused == true)
         {
             Time.timeScale = 0f;
@@ -43,5 +58,23 @@ public class GameManager : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
         }
+    }
+
+    public void Win()
+    {
+        isPaused = true;
+
+        UI.instance.winScreen.SetActive(isPaused);
+
+        Paused(isPaused);
+    }
+
+    public void Lose()
+    {
+        isPaused = true;
+
+        UI.instance.loseScreen.SetActive(isPaused);
+
+        Paused(isPaused);
     }
 }

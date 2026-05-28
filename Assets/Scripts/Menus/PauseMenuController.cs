@@ -27,7 +27,7 @@ public class PauseMenuController : MonoBehaviour
     {
         PlaySelectSound();
 
-        GameManager.instance.PauseUnpause();
+        GameManager.instance.PauseUnpauseMenu();
 
         if (musicSource != null && musicSource.isPlaying)
         {
@@ -47,7 +47,7 @@ public class PauseMenuController : MonoBehaviour
         }
     }
 
-    public void QuitGame()
+    public void PauseQuitGame()
     {
         PlaySelectSound();
 

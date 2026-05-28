@@ -9,12 +9,16 @@ public class UI : MonoBehaviour
     public static UI instance;
 
     public Slider healthBar;
-    public TextMeshProUGUI healthText, ammoText;
+    public TextMeshProUGUI healthText, ammoText, pointsText;
+
+    public int points;
 
     public Image damageEffect;
     public float damageAlpha = 0.7f, damageFadeSpeed = 0.5f;
 
     public GameObject pauseMenu;
+    public GameObject winScreen;
+    public GameObject loseScreen;
 
     private void Awake()
     {
@@ -23,11 +27,6 @@ public class UI : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            pauseMenu.SetActive(true);
-        }
-
         if (damageEffect.color.a != 0)
         {
             damageEffect.color = new Color(

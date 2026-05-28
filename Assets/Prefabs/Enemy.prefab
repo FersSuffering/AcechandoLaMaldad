@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92c973b11ec122b4ba0f80d914899ac0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 20
+  currentHealth: 15
   impactFX: {fileID: 0}
 --- !u!114 &3988517196638026732
 MonoBehaviour:
@@ -186,7 +186,7 @@ MonoBehaviour:
   firePoint: {fileID: 5200970785496298532}
   animator: {fileID: 4323652946653004737}
   distanceToStop: 5
-  fireRate: 0.4
+  fireRate: 1
 --- !u!1 &1424119192454960066
 GameObject:
   m_ObjectHideFlags: 0

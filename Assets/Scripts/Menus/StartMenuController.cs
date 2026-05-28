@@ -35,7 +35,7 @@ public class StartMenuController : MonoBehaviour
 
     void StartGame()
     {
-        SceneManager.LoadScene("Level");
+        SceneManager.LoadScene("Intro");
     }
 
     void QuitGame()
