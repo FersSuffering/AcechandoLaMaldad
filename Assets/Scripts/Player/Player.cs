@@ -8,8 +8,11 @@ public class Player : MonoBehaviour
     public Transform cameraTransform;
 
     public Transform firePoint;
+    public GameObject muzzleFlash;
 
     public Gun activeGun;
+    public List<Gun> allGuns = new List<Gun>();
+    public int currentGun;
 
     private void Awake()
     {
@@ -18,7 +21,8 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        UI.instance.ammoText.text = "" + activeGun.currentAmmo;
+        currentGun--;
+        SwitchGun();
     }
 
     void Update()
@@ -66,6 +70,11 @@ public class Player : MonoBehaviour
                 FireShot();
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            SwitchGun();
+        }
     }
 
     public void FireShot()
@@ -77,7 +86,33 @@ public class Player : MonoBehaviour
             Instantiate(activeGun.bullet, firePoint.position, firePoint.rotation);
 
             activeGun.fireCounter = activeGun.fireRate;
+
+            StartCoroutine(MuzzleFlash());
         }
+    }
+
+    IEnumerator MuzzleFlash()
+    {
+        muzzleFlash.SetActive(true);
+        yield return new WaitForSeconds(0.15f);
+        muzzleFlash.SetActive(false);
+    }
+
+    public void SwitchGun()
+    {
+        activeGun.gameObject.SetActive(false);
+
+        currentGun++;
+
+        if (currentGun >= allGuns.Count)
+        {
+            currentGun = 0;
+        }
+
+        activeGun = allGuns[currentGun];
+        activeGun.gameObject.SetActive(true);
+
+        firePoint.position = activeGun.firepoint.position;
     }
 
 }

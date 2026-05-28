@@ -12,6 +12,19 @@ public class HealthPickUp : MonoBehaviour
         {
             PlayerHealth.instance.HealPlayer(heal);
 
+            DestroyHealth();
+        }
+    }
+
+    private void DestroyHealth()
+    {
+        if (transform.parent != null)
+        {
+            GameObject parentGO = transform.parent.gameObject;
+            Destroy(parentGO);
+        }
+        else
+        {
             Destroy(gameObject);
         }
     }

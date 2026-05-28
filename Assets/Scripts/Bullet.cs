@@ -18,7 +18,7 @@ public class Bullet : MonoBehaviour
 
     void Update()
     {
-        theRigidBody.velocity = transform.up * bulletSpeed;
+        theRigidBody.velocity = transform.forward * bulletSpeed;
 
         lifeTime -= Time.deltaTime;
         if (lifeTime <= 0)

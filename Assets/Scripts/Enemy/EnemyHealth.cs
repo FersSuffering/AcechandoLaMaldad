@@ -10,6 +10,8 @@ public class EnemyHealth : MonoBehaviour
     public bool IsGunDisabled { get; private set; } = false;
     private float gunDisableDuration = 0.6f;
 
+    public ParticleSystem impactFX;
+
     private void Start()
     {
         enemy = GetComponent<EnemyMove>();

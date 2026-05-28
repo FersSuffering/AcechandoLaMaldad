@@ -10,7 +10,7 @@ public class PlayerHealth : MonoBehaviour
 
     private void Awake()
     {
-        instance = this;     
+        instance = this;
     }
 
     void Start()
@@ -29,6 +29,8 @@ public class PlayerHealth : MonoBehaviour
     public void DamagePlayer(int damage)
     {
         currentHealth -= damage;
+
+        UI.instance.ShowDamage();
 
         if (currentHealth <= 0) 
         { 

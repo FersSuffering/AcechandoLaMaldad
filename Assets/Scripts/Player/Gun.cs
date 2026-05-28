@@ -14,6 +14,8 @@ public class Gun : MonoBehaviour
 
     public int currentAmmo, pickUpAmount;
 
+    public Transform firepoint;
+
     void Start()
     {
         

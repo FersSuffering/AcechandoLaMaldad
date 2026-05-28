@@ -14,6 +14,19 @@ public class AmmoPickUp : MonoBehaviour
 
             collected = true;
 
+            DestroyAmmo();
+        }
+    }
+
+    private void DestroyAmmo()
+    {
+        if (transform.parent.parent != null)
+        {
+            GameObject parentGO = transform.parent.parent.gameObject;
+            Destroy(parentGO);
+        }
+        else
+        {
             Destroy(gameObject);
         }
     }
